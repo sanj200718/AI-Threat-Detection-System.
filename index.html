@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Cyber Threat Detection</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="login" class="center section">
+  <div class="card glass">
+    <h2>🛡 Cyber Threat Detection</h2>
+    <p class="subtitle">Secure Login</p>
+    <input id="login-user" type="text" placeholder="Username">
+    <input id="login-pass" type="password" placeholder="Password">
+    <button onclick="showDashboard()">Login</button>
+    <div class="action-row">
+      <span>New here?</span>
+      <button class="small-button" onclick="showSignup()">Sign Up</button>
+    </div>
+  </div>
+</div>
+
+<div id="signup" class="center section hidden">
+  <div class="card glass">
+    <h2>📝 Create Account</h2>
+    <p class="subtitle">Register your team</p>
+    <input id="signup-name" type="text" placeholder="Full Name">
+    <input id="signup-email" type="email" placeholder="Email Address">
+    <input id="signup-user" type="text" placeholder="Username">
+    <input id="signup-pass" type="password" placeholder="Password">
+    <input id="signup-confirm" type="password" placeholder="Confirm Password">
+    <button onclick="completeSignup()">Sign Up</button>
+    <div class="action-row">
+      <span>Already have an account?</span>
+      <button class="small-button" onclick="showLogin()">Login</button>
+    </div>
+  </div>
+</div>
+
+<div id="dashboard" class="section hidden">
+  <div class="dashboard">
+    <h2>Dashboard</h2>
+    <div class="topnav">
+      <button onclick="showDashboard()">Home</button>
+      <button onclick="showUpload()">Scan</button>
+      <button onclick="showHistory()">History</button>
+      <button onclick="showAbout()">About Us</button>
+      <button onclick="showThreatTypes()">Types of Threats</button>
+      <button onclick="showProfile()">Profile</button>
+    </div>
+
+    <div class="hero-banner">
+      <img class="hero-image" src="cyber-box.jpg" alt="Cyber security illustration">
+      <div class="hero-copy">
+        <h3>Modern security built for email threats.</h3>
+        <p>Scan unstructured data and keep your team secure with AI-powered insights and real-time STRIDE analysis.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="box">
+        <h3>Upload Logs</h3>
+        <p>Analyze system logs for hidden risks.</p>
+        <button onclick="showUpload()">Start Scan</button>
+      </div>
+      <div class="box">
+        <h3>System Status</h3>
+        <p class="safe">● Backend Connected</p>
+        <p class="safe">● AI Model Active</p>
+        <button onclick="showProfile()">View Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="upload" class="center section hidden">
+  <div class="card glass">
+    <h2>Upload Log File</h2>
+    <div class="upload-box">
+      <input type="file" id="file">
+    </div>
+    <button onclick="startScan()">Start Scan</button>
+    <button class="small-button" onclick="showDashboard()" style="margin-top: 10px;">Back</button>
+  </div>
+</div>
+
+<div id="scanning" class="center section hidden">
+  <div class="card glass">
+    <h2>Scanning Logs</h2>
+    <div class="loader"></div>
+    <p class="subtitle">Analyzing content for threat signatures...</p>
+    <button class="small-button" onclick="showUpload()" style="margin-top: 20px;">Cancel Scan</button>
+  </div>
+</div>
+
+<div id="result" class="center section hidden">
+  <div class="card glass">
+    <h2>Scan Result</h2>
+    <div class="threat-level-box">
+      <span id="threat-level" class="threat-level">Processing...</span>
+    </div>
+    <p id="result-message" class="subtitle">Detailed analysis will appear here.</p>
+    
+    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+        <button onclick="showUpload()">New Scan</button>
+        <button onclick="showDashboard()">Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<div id="history" class="center section hidden">
+  <div class="card glass">
+    <h2>Scan History</h2>
+    <p class="subtitle">Logs retrieved from local security database.</p>
+    <div id="history-list" style="max-height: 300px; overflow-y: auto; margin: 15px 0; text-align: left;">
+        </div>
+    <div style="display: flex; gap: 10px; justify-content: center;">
+        <button onclick="showDashboard()">Back</button>
+        <button onclick="clearHistory()" style="background: #ff4d4d;">Clear History</button>
+    </div>
+  </div>
+</div>
+
+<div id="about" class="center section hidden">
+  <div class="card glass">
+    <h2>About Us</h2>
+    <p>We provide a three-layered security architecture: <strong>Extraction</strong>, <strong>Processing</strong>, and <strong>AI Analysis</strong>.</p>
+    <button onclick="showDashboard()">Back to Dashboard</button>
+  </div>
+</div>
+
+<div id="threatTypes" class="center section hidden">
+    <div class="card glass">
+      <h2>STRIDE Threat Model</h2>
+      <ul style="text-align: left; line-height: 1.8;">
+        <li>🛡️ <strong>Spoofing:</strong> Identity theft.</li>
+        <li>🛠️ <strong>Tampering:</strong> Data modification.</li>
+        <li>📂 <strong>Information Disclosure:</strong> Data leakage.</li>
+        <li>📉 <strong>Denial of Service:</strong> Resource exhaustion.</li>
+        <li>🔑 <strong>Elevation of Privilege:</strong> Unauthorized access.</li>
+      </ul>
+      <button onclick="showDashboard()">Back to Dashboard</button>
+    </div>
+</div>
+
+<div id="profile" class="center section hidden">
+  <div class="card glass">
+    <h2>Analyst Profile</h2>
+    <img class="profile-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23263a58'/%3E%3Ccircle cx='60' cy='40' r='24' fill='%23cbd5e1'/%3E%3Cpath d='M30 100c0-18 30-28 30-28s30 10 30 28' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="Avatar">
+    
+    <div class="profile-details" style="margin: 20px 0;">
+      <h3 id="display-username" style="margin: 0; color: #2ecc71; font-size: 1.5em;">@Loading...</h3>
+      <p class="subtitle" style="margin-top: 5px; opacity: 0.8;">Active Security Analyst</p>
+    </div>
+
+    <button onclick="showDashboard()">Back to Dashboard</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
